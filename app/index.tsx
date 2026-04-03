@@ -24,7 +24,7 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Text style={styles.title}>Hello </Text>
-          <Text style={styles.titleSpan}>Elkatiri 👋🏻</Text>
+          <Text style={styles.titleSpan}>Elkatiri</Text>
         </View>
 
         <Text style={styles.subtitle}>Log in to your account</Text>
