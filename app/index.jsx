@@ -1,9 +1,8 @@
-import { SafeAreaView, Text } from "react-native";
-import Welcome from "./screens/welcome/welcome";
+import Register from "./screens/register/register";
 
 export default function HomeScreen() {
   return (
     
-      <Welcome />
+      <Register />
   );
 }

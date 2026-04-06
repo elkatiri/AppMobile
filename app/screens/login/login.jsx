@@ -1,0 +1,140 @@
+import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  Pressable
+} from "react-native";
+import Input from "../../../components/input";
+import LoginButton from "../../../components/loginButton";
+import { SafeAreaView } from "react-native-safe-area-context";
+import ExtraLinks from "../../../components/extraLinks";
+
+const Login = () => {
+  return (
+    <SafeAreaView style={styles.mainContainer}>
+      
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+        style={{ flex: 1 }}
+      >
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContainer}
+        >
+
+          {/* Image */}
+          <Image
+            style={styles.image}
+            source={require("../../assets/images/objects.png")}
+          />
+
+          {/* Header */}
+          <View style={styles.header}>
+            <Text style={styles.title}>Login Here</Text>
+            <Text style={styles.description}>
+              Welcome back, you have been missed!
+            </Text>
+          </View>
+
+          {/* Form */}
+          <View style={styles.form}>
+            <Input placeholder="Enter your email" />
+            <Input placeholder="Enter your password" secureTextEntry />
+
+            <Pressable>
+              <Text style={styles.forgotPassword}>Forgot password?</Text>
+            </Pressable>
+
+            <LoginButton title="Sign In" />
+
+            {/* Signup */}
+            <View style={styles.signupContainer}>
+              <Text style={styles.signupText}>
+                Don't have an account?
+              </Text>
+              <Pressable>
+                <Text style={styles.signupLink}> Sign Up</Text>
+              </Pressable>
+            </View>
+          </View>
+
+          {/* Social login */}
+          <ExtraLinks />
+
+        </ScrollView>
+      </KeyboardAvoidingView>
+
+    </SafeAreaView>
+  );
+};
+
+export default Login;
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+
+  scrollContainer: {
+    flexGrow: 1,
+    paddingBottom: 30,
+  },
+
+  image: {
+    width: "100%",
+    height: 250,
+  },
+
+  header: {
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 20,
+  },
+
+  title: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#1F41BB",
+  },
+
+  description: {
+    fontSize: 15,
+    color: "#444",
+    marginTop: 8,
+    textAlign: "center",
+    paddingHorizontal: 20,
+  },
+
+  form: {
+    paddingHorizontal: 25,
+    marginTop: 10,
+  },
+
+  forgotPassword: {
+    color: "#1F41BB",
+    textAlign: "right",
+    marginBottom: 20,
+    marginTop: 5,
+  },
+
+  signupContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 20,
+  },
+
+  signupText: {
+    color: "#444",
+  },
+
+  signupLink: {
+    color: "#1F41BB",
+    fontWeight: "600",
+  },
+});

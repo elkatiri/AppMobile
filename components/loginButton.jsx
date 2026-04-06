@@ -9,6 +9,9 @@ export default function LoginButton({title, white, setFocused}) {
 }
 const style=StyleSheet.create({
   container: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignSelf: 'center',
     backgroundColor: '#1F41BB',
     width: 180,
     justifyContent: 'center',
