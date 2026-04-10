@@ -1,8 +1,11 @@
-import Register from "./screens/register/register";
+import { router } from "expo-router";
+import Welcome from "./screens/welcome/welcome";
 
 export default function HomeScreen() {
   return (
-    
-      <Register />
+    <Welcome
+      onLoginPress={() => router.push("/login")}
+      onRegisterPress={() => router.push("/register")}
+    />
   );
 }

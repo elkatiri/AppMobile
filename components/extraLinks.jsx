@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { FontAwesome } from '@expo/vector-icons';
 
 const providers = [
   { name: 'google', icon: 'google' },
@@ -48,33 +48,40 @@ export default ExtraLinks;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginTop: 25,
-    cursor: 'pointer',
+    marginTop: 28,
   },
   title: {
-    color: '#1F41BB',
-    fontSize: 15,
-    fontWeight: '500',
-    marginBottom: 10,
+    color: '#5e6a86',
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 14,
+    letterSpacing: 0.4,
   },
   row: {
     flexDirection: 'row',
-    gap: 12,
+    gap: 14,
   },
   link: {
-    width: 55,
-    height: 55,
-    borderRadius: 18,
-    backgroundColor: '#f1f1f1',
+    width: 58,
+    height: 58,
+    borderRadius: 20,
+    backgroundColor: '#f8fbff',
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 2, // Android shadow
+    borderWidth: 1,
+    borderColor: '#d7def0',
+    shadowColor: '#0f172a',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.08,
+    shadowRadius: 16,
+    elevation: 3,
   },
   active: {
-    backgroundColor: '#1F41BB',
+    backgroundColor: '#0f3cc9',
+    borderColor: '#0f3cc9',
   },
   pressed: {
-    opacity: 0.7,
-    transform: [{ scale: 0.95 }],
+    opacity: 0.88,
+    transform: [{ scale: 0.97 }],
   },
 });

@@ -1,39 +1,58 @@
-import react from 'react'
+import React from 'react'
 import { Pressable, StyleSheet, Text } from 'react-native'
-export default function LoginButton({title, white, setFocused}) {
+
+export default function LoginButton({ title, white, setFocused, onPress, style, textStyle }) {
   return (
-    <Pressable onFocus={() => setFocused(true)} style ={[style.container, white && style.whiteContainer]}>
-      <Text style={[style.text,white && style.whiteText]}>{title}</Text>
+    <Pressable
+      onFocus={() => setFocused?.(true)}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.container,
+        white ? styles.whiteContainer : styles.primaryContainer,
+        pressed && styles.pressed,
+        style,
+      ]}
+    >
+      <Text style={[styles.text, white && styles.whiteText, textStyle]}>{title}</Text>
     </Pressable>
   )
 }
-const style=StyleSheet.create({
+
+const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
     justifyContent: 'center',
     alignSelf: 'center',
-    backgroundColor: '#1F41BB',
-    width: 180,
-    justifyContent: 'center',
-    alignContent: 'center',
-    height: 50,
-    paddingVertical: 10,
-    borderRadius: 10,
+    minWidth: 160,
+    height: 56,
+    paddingHorizontal: 24,
+    borderRadius: 18,
     alignItems: 'center',
-    cursor: 'pointer',
+    shadowColor: '#0f172a',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.12,
+    shadowRadius: 18,
+    elevation: 6,
   },
   text: {
     color: '#fff',
     textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-    paddingHorizontal:40,
-    paddingVertical: 5,
+    fontSize: 17,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+  },
+  primaryContainer: {
+    backgroundColor: '#0f3cc9',
   },
   whiteContainer: {
-    backgroundColor: '#fff'
+    backgroundColor: '#f8fbff',
+    borderWidth: 1,
+    borderColor: '#d5e2ff',
   },
   whiteText: {
-    color: '#000000',
-  }
+    color: '#163172',
+  },
+  pressed: {
+    opacity: 0.92,
+    transform: [{ scale: 0.98 }],
+  },
 })
