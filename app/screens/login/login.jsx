@@ -19,7 +19,19 @@ import { FontAwesome } from "@expo/vector-icons";
 const Login = () => {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-
+  const [user, setUser] = React.useState({ email: "", password: "" });
+  const [error, setError] = React.useState("");
+  const handleLogin = () => {
+    if (!user.email || !user.password) {
+      setError("Please enter both email and password.");
+      return;
+    }
+    setError("");
+    router.replace({
+      pathname: "/home",
+      params: { email: user.email },
+    });
+  };
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.backgroundTop} />
@@ -71,14 +83,24 @@ const Login = () => {
               </View>
 
               <View style={styles.form}>
-                <Input placeholder="Enter your email" />
-                <Input placeholder="Enter your password" secureTextEntry />
-
+                <Input
+                  placeholder="Enter your email"
+                  value={user.email}
+                  onChangeText={(text) => setUser({ ...user, email: text })}
+                />
+                {error && <Text style={styles.errorText}>{error}</Text>}
+                <Input
+                  placeholder="Enter your password"
+                  secureTextEntry
+                  value={user.password}
+                  onChangeText={(text) => setUser({ ...user, password: text })}
+                />
+                {error && <Text style={styles.errorText}>{error}</Text>}
                 <Pressable>
                   <Text style={styles.forgotPassword}>Forgot password?</Text>
                 </Pressable>
 
-                <LoginButton title="Sign In" style={styles.primaryButton} />
+                <LoginButton title="Sign In" style={styles.primaryButton} onPress={handleLogin} />
 
                 <View style={styles.signupContainer}>
                   <Text style={styles.signupText}>
