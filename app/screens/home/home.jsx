@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "expo-router";
 import {
   ActivityIndicator,
   FlatList,
   Image,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -11,6 +13,7 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 
 const Home = ({ email }) => {
+  const router = useRouter();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -78,7 +81,15 @@ const Home = ({ email }) => {
           </View>
         }
         renderItem={({ item }) => (
-          <View style={styles.productCard}>
+          <Pressable
+            style={styles.productCard}
+            onPress={() =>
+              router.push({
+                pathname: "/productdetails/[id]",
+                params: { id: item.id },
+              })
+            }
+          >
             <Image
               source={{ uri: item.image }}
               style={styles.productImage}
@@ -86,7 +97,7 @@ const Home = ({ email }) => {
             />
             <Text numberOfLines={2} style={styles.productTitle}>{item.title}</Text>
             <Text style={styles.productPrice}>${item.price}</Text>
-          </View>
+          </Pressable>
         )}
       />
       )}
